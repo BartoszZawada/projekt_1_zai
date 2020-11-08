@@ -1,6 +1,6 @@
 /*
 Created: 2020-11-02
-Modified: 2020-11-05
+Modified: 2020-11-08
 Model: MySQL 8.0
 Database: MySQL 8.0
 */
@@ -12,9 +12,9 @@ Database: MySQL 8.0
 CREATE TABLE `User`
 (
   `user_id` Int NOT NULL AUTO_INCREMENT,
-  `username` Varchar(20) NOT NULL,
-  `password` Varchar(20) NOT NULL,
-  `email` Varchar(60) NOT NULL,
+  `username` Varchar(256) NOT NULL,
+  `password` Varchar(256) NOT NULL,
+  `email` Varchar(256) NOT NULL,
   PRIMARY KEY (`user_id`)
 )
 ;
@@ -24,12 +24,12 @@ CREATE TABLE `User`
 CREATE TABLE `Music`
 (
   `music_id` Int NOT NULL AUTO_INCREMENT,
-  `file_name` Varchar(40) NOT NULL,
-  `title` Varchar(20) NOT NULL,
-  `ISRC` Varchar(40) NOT NULL,
-  `composer` Varchar(40) NOT NULL,
-  `author` Varchar(40) NOT NULL,
-  `author_2` Varchar(40) NOT NULL,
+  `file_name` Varchar(256) NOT NULL,
+  `title` Varchar(256) NOT NULL,
+  `ISRC` Varchar(256) NOT NULL,
+  `composer` Varchar(256) NOT NULL,
+  `author` Varchar(256) NOT NULL,
+  `author_2` Varchar(256) NOT NULL,
   `time` Int NOT NULL,
   PRIMARY KEY (`music_id`)
 )
@@ -40,7 +40,7 @@ CREATE TABLE `Music`
 CREATE TABLE `Raport`
 (
   `raport_id` Int NOT NULL AUTO_INCREMENT,
-  `name` Varchar(50) NOT NULL,
+  `name` Varchar(256) NOT NULL,
   `month` Int NOT NULL,
   `year` Int NOT NULL,
   PRIMARY KEY (`raport_id`)
@@ -64,11 +64,13 @@ CREATE TABLE `Music_raport`
 
 -- Create foreign keys (relationships) section -------------------------------------------------
 
-ALTER TABLE `Music_raport` ADD CONSTRAINT `Muzyka wchodzi w sklad` FOREIGN KEY (`music_id`) REFERENCES `Music` (`music_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+ALTER TABLE `Music_raport` ADD CONSTRAINT `Muzyka wchodzi w skład` FOREIGN KEY (`music_id`) REFERENCES `Music` (`music_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ;
 
 ALTER TABLE `Music_raport` ADD CONSTRAINT `Raport zawiera` FOREIGN KEY (`raport_id`) REFERENCES `Raport` (`raport_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ;
+
+
 
 
 
@@ -80,5 +82,5 @@ INSERT INTO `Music` (`music_id`, `file_name`, `title`, `ISRC`, `composer`, `auth
 (4, 'Czwarty rekord', 'Uwertura 004', 'ISRC04ISRC04ISRC04ISRC04ISRC04', 'Kamil Kowalski', 'Czajkowski', 'Brak', 300);
 
 INSERT INTO `User` (`user_id`, `username`, `password`, `email`) VALUES
-(1, 'Bartek', 'bartek123', 'bartek@gmail.com'),
-(2, 'Karolina', 'karolina123', 'karolina123@gmail.com');
+(1, 'Bartek', '$2y$10$2IqtH2uZLP1oL7OkZcBLz.NqoAlc89EcPrnCaDm/BIAYur2bFpsoq', 'bartek@gmail.com'),
+(2, 'Karolina', '$2y$10$2pjuK8BqQPPiZ3VEYnQitOo/36D1g0NztXMRrB7wqpLhgfeJzhCz6', 'karolina123@gmail.com');

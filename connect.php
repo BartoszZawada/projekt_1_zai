@@ -1,9 +1,9 @@
 <?php
 
-//	$host = "localhost";
+	//$host = "localhost";
 	//$db_user = "root";
 	//$db_password = "";
-	//$db_name = "projekt_1_ZAI";
+	//$db_name = "projekt_zai";
 
 	$host = "ryfqldzbliwmq6g5.chr7pe7iynqr.eu-west-1.rds.amazonaws.com";
 	$db_user = "ay9zf1wot38v1bpg";
